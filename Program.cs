@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using System.Reflection;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace LearnNHibernate
 {
@@ -16,6 +17,8 @@ namespace LearnNHibernate
         
         static void Main(string[] args)
         {
+            NHibernateProfiler.Initialize();
+
             #region Connection To DB //////////////////////////////////////////////////////////
             var cfg = new Configuration();
 
@@ -43,7 +46,8 @@ namespace LearnNHibernate
                         MultiSubnetFailover = {MultiSubnetFailover}"; 
 
                 x.Driver<SqlClientDriver>(); 
-                x.Dialect<MsSql2008Dialect>(); 
+                x.Dialect<MsSql2008Dialect>();
+                x.LogSqlInConsole = true;
             });
             #endregion
 
@@ -117,7 +121,7 @@ namespace LearnNHibernate
                     }
 
                     //Show Specific Data
-                    var stdnt = session.Get<Student>(1);
+                    var stdnt = session.Get<Student>(4);
                     Console.WriteLine("Retrieved by ID");
                     Console.WriteLine("{0} \t{1} \t{2}", stdnt.ID, stdnt.FirstMidName, stdnt.LastName);
                     tx.Commit();
@@ -185,3 +189,4 @@ namespace LearnNHibernate
         }
     }
 }
+
