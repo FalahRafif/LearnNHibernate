@@ -23,7 +23,6 @@ D:\Project\NET_Framework_WebForms\LearnNHibernate\obj\Debug\LearnNHibernate.cspr
 D:\Project\NET_Framework_WebForms\LearnNHibernate\obj\Debug\LearnNHibernate.csproj.CoreCompileInputs.cache
 D:\Project\NET_Framework_WebForms\LearnNHibernate\obj\Debug\LearnNHibernate.exe
 D:\Project\NET_Framework_WebForms\LearnNHibernate\obj\Debug\LearnNHibernate.pdb
-D:\Project\NET_Framework_WebForms\LearnNHibernate\obj\Debug\LearnNHibernate.csproj.CopyComplete
 D:\Project\NET_Framework_WebForms\LearnNHibernate\bin\Debug\Azure.Core.dll
 D:\Project\NET_Framework_WebForms\LearnNHibernate\bin\Debug\Azure.Storage.Blobs.dll
 D:\Project\NET_Framework_WebForms\LearnNHibernate\bin\Debug\Azure.Storage.Common.dll

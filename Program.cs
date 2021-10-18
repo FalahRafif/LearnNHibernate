@@ -81,15 +81,17 @@ namespace LearnNHibernate
             //        var student1 = new Student
             //        {
             //            ID = 0,
-            //            FirstMidName = "Allan",
-            //            LastName = "Bommer"
+            //            FirstName = "Allan",
+            //            LastName = "Bommer",
+            //            AcademicStanding = Student.StudentAcademicStanding.Excellent
             //        };
 
             //        var student2 = new Student
             //        {
             //            ID = 0,
-            //            FirstMidName = "Jerry",
-            //            LastName = "Lewis"
+            //            FirstName = "Jerry",
+            //            LastName = "Lewis",
+            //            AcademicStanding = Student.StudentAcademicStanding.Excellent
             //        };
 
             //        //save data
@@ -116,14 +118,14 @@ namespace LearnNHibernate
                     Console.WriteLine("List Students");
                     foreach (var student in students)
                     {
-                        Console.WriteLine("{0} \t{1} \t{2}",
-                           student.ID, student.FirstMidName, student.LastName);
+                        Console.WriteLine("{0} \t{1} \t{2} \t{3}",
+                           student.ID, student.FirstName, student.LastName, student.AcademicStanding);
                     }
 
                     //Show Specific Data
-                    var stdnt = session.Get<Student>(4);
+                    var stdnt = session.Get<Student>(1);
                     Console.WriteLine("Retrieved by ID");
-                    Console.WriteLine("{0} \t{1} \t{2}", stdnt.ID, stdnt.FirstMidName, stdnt.LastName);
+                    Console.WriteLine("{0} \t{1} \t{2} \t{3}", stdnt.ID, stdnt.FirstName, stdnt.LastName, stdnt.AcademicStanding);
                     tx.Commit();
                 }
 

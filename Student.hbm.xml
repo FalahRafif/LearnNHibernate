@@ -11,7 +11,8 @@
 		</id>
 		<!-- Property -->
 		<property name = "LastName"/>
-		<property name = "FirstMidName"/>
+		<property name = "FirstName" column="FirstMidName" type="string"/>
+		<property name = "AcademicStanding"/>
 	</class>
 
 </hibernate-mapping>
