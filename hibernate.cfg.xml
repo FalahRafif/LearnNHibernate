@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns = "urn:nhibernate-configuration-2.2">
+	<session-factory>
+
+		<property name = "connection.connection_string">
+			Data Source = DESKTOP-2UMMUTE\\SQLEXPRESS;
+			Initial Catalog = LearnNhibernate;
+			Integrated Security = True;
+			Connect Timeout = 50;
+			Encrypt = False;
+			TrustServerCertificate = False;
+			ApplicationIntent = ReadWrite;
+			MultiSubnetFailover = False;
+		</property>
+
+		<property name = "connection.driver_class">
+			NHibernate.Driver.SqlClientDriver
+		</property>
+
+		<property name = "dialect">
+			NHibernate.Dialect.MsSql2008Dialect
+		</property>
+
+		<mapping assembly = "NHibernateDemoApp"/>
+
+	</session-factory>
+
+</hibernate-configuration>
