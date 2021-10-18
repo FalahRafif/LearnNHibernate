@@ -43,7 +43,8 @@ namespace LearnNHibernate
                         MultiSubnetFailover = {MultiSubnetFailover}"; 
 
                 x.Driver<SqlClientDriver>(); 
-                x.Dialect<MsSql2008Dialect>(); 
+                x.Dialect<MsSql2008Dialect>();
+                x.LogSqlInConsole = true;
             });
             #endregion
 
@@ -117,7 +118,7 @@ namespace LearnNHibernate
                     }
 
                     //Show Specific Data
-                    var stdnt = session.Get<Student>(1);
+                    var stdnt = session.Get<Student>(4);
                     Console.WriteLine("Retrieved by ID");
                     Console.WriteLine("{0} \t{1} \t{2}", stdnt.ID, stdnt.FirstMidName, stdnt.LastName);
                     tx.Commit();
