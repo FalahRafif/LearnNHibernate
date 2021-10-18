@@ -1,0 +1,50 @@
+2021-10-10 20:30:52,084 [1] DEBUG HibernatingRhinos.Profiler.Client.App [(null)] - Profiler initialized. Build: 6029
+2021-10-10 20:31:09,443 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - Could not find license file: C:\Users\admin\AppData\Local\NHibernate Profiler\license.xml
+2021-10-18 15:22:48,924 [1] DEBUG HibernatingRhinos.Profiler.Client.App [(null)] - Profiler initialized. Build: 6029
+2021-10-18 15:23:13,894 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - Could not find license file: C:\Users\admin\AppData\Local\NHibernate Profiler\license.xml
+2021-10-18 15:28:26,358 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - License expiration date is 11/09/2021 00:00:00
+2021-10-18 15:28:26,948 [1] DEBUG Rhino.Licensing.AbstractLicenseValidator [(null)] - License accepted for NHibernate Profiler
+2021-10-18 15:28:27,117 [1] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): A socket operation was attempted to an unreachable host
+   at System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2021-10-18 15:28:27,612 [1] WARN  Rhino.Licensing.AbstractLicenseValidator [(null)] - License expiration date is 11/09/2021 00:00:00
+2021-10-18 15:28:27,751 [1] DEBUG Rhino.Licensing.AbstractLicenseValidator [(null)] - License accepted for NHibernate Profiler
+2021-10-18 15:28:28,155 [1] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): A socket operation was attempted to an unreachable host
+   at System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2021-10-18 15:28:51,285 [18] INFO  HibernatingRhinos.Profiler.Client.Infrastructure.AutoUpdate.ProfilerAutoUpdate [(null)] - Checking for updates...
+2021-10-18 15:28:53,530 [18] INFO  HibernatingRhinos.Profiler.Client.Infrastructure.AutoUpdate.ProfilerAutoUpdate [(null)] - There is no update available.
+2021-10-18 15:38:27,676 [25] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): A socket operation was attempted to an unreachable host
+   at System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2021-10-18 15:43:27,685 [35] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): A socket operation was attempted to an unreachable host
+   at System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()
+2021-10-18 15:48:27,691 [35] ERROR Rhino.Licensing.Discovery.DiscoveryClient [(null)] - Failed to publish application's presence
+System.Net.Sockets.SocketException (0x80004005): A socket operation was attempted to an unreachable host
+   at System.Net.Sockets.Socket.EndSendTo(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Rhino.Licensing.Discovery.DiscoveryClient.<PublishMyPresence>d__8.MoveNext()

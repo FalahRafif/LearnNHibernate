@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using System.Reflection;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace LearnNHibernate
 {
@@ -16,6 +17,8 @@ namespace LearnNHibernate
         
         static void Main(string[] args)
         {
+            NHibernateProfiler.Initialize();
+
             #region Connection To DB //////////////////////////////////////////////////////////
             var cfg = new Configuration();
 
@@ -186,3 +189,4 @@ namespace LearnNHibernate
         }
     }
 }
+
