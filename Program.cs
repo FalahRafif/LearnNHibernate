@@ -20,8 +20,7 @@ namespace LearnNHibernate
             NHibernateProfiler.Initialize();
 
             #region Connection To DB //////////////////////////////////////////////////////////
-            var cfg = new Configuration();
-
+            var cfg = new Configuration().Configure();
             #region Prepare Statment
             String DataSource               = @"DESKTOP-2UMMUTE\SQLEXPRESS";
             String InitialCatalog           =  "LearnNhibernate";
@@ -34,21 +33,21 @@ namespace LearnNHibernate
             #endregion
 
             #region Set Up Connection String
-            cfg.DataBaseIntegration(x => { 
-                x.ConnectionString = $@"
-                        Data Source = {DataSource}; 
-                        Initial Catalog = {InitialCatalog}; 
-                        Integrated Security = {IntegratedSecurity}; 
-                        Connect Timeout = {ConnectTimeout}; 
-                        Encrypt = {Encrypt}; 
-                        TrustServerCertificate = {TrustServerCertificate}; 
-                        ApplicationIntent = {ApplicationIntent}; 
-                        MultiSubnetFailover = {MultiSubnetFailover}"; 
+            //cfg.DataBaseIntegration(x => { 
+            //    x.ConnectionString = $@"
+            //            Data Source = {DataSource}; 
+            //            Initial Catalog = {InitialCatalog}; 
+            //            Integrated Security = {IntegratedSecurity}; 
+            //            Connect Timeout = {ConnectTimeout}; 
+            //            Encrypt = {Encrypt}; 
+            //            TrustServerCertificate = {TrustServerCertificate}; 
+            //            ApplicationIntent = {ApplicationIntent}; 
+            //            MultiSubnetFailover = {MultiSubnetFailover}"; 
 
-                x.Driver<SqlClientDriver>(); 
-                x.Dialect<MsSql2008Dialect>();
-                x.LogSqlInConsole = true;
-            });
+            //    x.Driver<SqlClientDriver>(); 
+            //    x.Dialect<MsSql2008Dialect>();
+            //    x.LogSqlInConsole = true;
+            //});
             #endregion
 
             #region Connect To DB
