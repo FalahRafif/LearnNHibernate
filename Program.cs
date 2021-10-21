@@ -8,28 +8,28 @@ using System.Reflection;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
-using HibernatingRhinos.Profiler.Appender.NHibernate;
+using System.Data.SqlClient;
+//using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace LearnNHibernate
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
-            NHibernateProfiler.Initialize();
+            //NHibernateProfiler.Initialize();
 
             #region Connection To DB //////////////////////////////////////////////////////////
             var cfg = new Configuration().Configure();
             #region Prepare Statment
-            String DataSource               = @"DESKTOP-2UMMUTE\SQLEXPRESS";
-            String InitialCatalog           =  "LearnNhibernate";
-            String IntegratedSecurity       =  "True";
-            String ConnectTimeout           =  "15";
-            String Encrypt                  =  "False";
-            String TrustServerCertificate   =  "False";
-            String ApplicationIntent        =  "ReadWrite";
-            String MultiSubnetFailover      =  "False";
+            //String DataSource               = @"DESKTOP-2UMMUTE\SQLEXPRESS";
+            //String InitialCatalog           =  "LearnNhibernate";
+            //String IntegratedSecurity       =  "True";
+            //String ConnectTimeout           =  "15";
+            //String Encrypt                  =  "False";
+            //String TrustServerCertificate   =  "False";
+            //String ApplicationIntent        =  "ReadWrite";
+            //String MultiSubnetFailover      =  "False";
             #endregion
 
             #region Set Up Connection String
