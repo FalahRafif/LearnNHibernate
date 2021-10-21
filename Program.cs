@@ -9,6 +9,8 @@ using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
+using NHibernate.Cache;
+
 
 namespace LearnNHibernate
 {
@@ -35,21 +37,32 @@ namespace LearnNHibernate
             #region Set Up Connection String
             cfg.DataBaseIntegration(x =>
             {
-                x.ConnectionString = $@"
-                        Data Source = {DataSource}; 
-                        Initial Catalog = {InitialCatalog}; 
-                        Integrated Security = {IntegratedSecurity}; 
-                        Connect Timeout = {ConnectTimeout}; 
-                        Encrypt = {Encrypt}; 
-                        TrustServerCertificate = {TrustServerCertificate}; 
-                        ApplicationIntent = {ApplicationIntent}; 
-                        MultiSubnetFailover = {MultiSubnetFailover}";
+                //x.ConnectionString = $@"
+                //        Data Source = {DataSource}; 
+                //        Initial Catalog = {InitialCatalog}; 
+                //        Integrated Security = {IntegratedSecurity}; 
+                //        Connect Timeout = {ConnectTimeout}; 
+                //        Encrypt = {Encrypt}; 
+                //        TrustServerCertificate = {TrustServerCertificate}; 
+                //        ApplicationIntent = {ApplicationIntent}; 
+                //        MultiSubnetFailover = {MultiSubnetFailover}";
 
-                x.Driver<SqlClientDriver>();
-                x.Dialect<MsSql2008Dialect>();
+                //x.Driver<SqlClientDriver>();
+                //x.Dialect<MsSql2008Dialect>();
                 x.LogSqlInConsole = true;
                 x.BatchSize = 10;
             });
+            #endregion
+
+            #region Cache
+            cfg.Cache(c => {
+                c.UseMinimalPuts = true;
+                c.UseQueryCache = true;
+            });
+
+            cfg.SessionFactory().Caching.Through<HashtableCacheProvider>()
+               .WithDefaultExpiration(1440);
+            cfg.AddAssembly(Assembly.GetExecutingAssembly());
             #endregion
 
             #region Connect To DB
@@ -62,6 +75,9 @@ namespace LearnNHibernate
 
                 using (var tx = session.BeginTransaction())
                 {
+                    // chap 
+                    var studentUsingTheFirstQuery = session.Get<Student>(1);
+                    var studentUsingTheSecondQuery = session.Get<Student>(1);
                     //perform database logic 
                     tx.Commit();
                 }
@@ -73,52 +89,52 @@ namespace LearnNHibernate
 
             #region CRUD Operation ////////////////////////////////////////////////////////////
             #region Create
-            using (var session = sefact.OpenSession())
-            {
+            //using (var session = sefact.OpenSession())
+            //{
 
-                using (var tx = session.BeginTransaction())
-                {
+            //    using (var tx = session.BeginTransaction())
+            //    {
 
-                    //var student1 = new Student
-                    //{
-                    //    ID = 0,
-                    //    FirstName = "Allan",
-                    //    LastName = "Bommer",
-                    //    AcademicStanding = Student.StudentAcademicStanding.Excellent
-                    //};
+            //        var student1 = new Student
+            //        {
+            //            ID = 0,
+            //            FirstName = "Allan",
+            //            LastName = "Bommer",
+            //            AcademicStanding = Student.StudentAcademicStanding.Excellent
+            //        };
 
-                    //var student2 = new Student
-                    //{
-                    //    ID = 0,
-                    //    FirstName = "Jerry",
-                    //    LastName = "Lewis",
-                    //    AcademicStanding = Student.StudentAcademicStanding.Excellent
-                    //};
+            //        var student2 = new Student
+            //        {
+            //            ID = 0,
+            //            FirstName = "Jerry",
+            //            LastName = "Lewis",
+            //            AcademicStanding = Student.StudentAcademicStanding.Excellent
+            //        };
 
-                    ////save data
-                    //session.Save(student1);
-                    //session.Save(student2);
+            //        //save data
+            //        session.Save(student1);
+            //        session.Save(student2);
 
-                    //chap 9 | insert 25 student
-                    for (int i = 0; i < 25; i++)
-                    {
+            //        //chap 9 | insert 25 student
+            //        for (int i = 0; i < 25; i++)
+            //        {
 
-                        var student = new Student
-                        {
-                            FirstName = "FirstName" + i.ToString(),
-                            LastName = "LastName" + i.ToString(),
-                            AcademicStanding = Student.StudentAcademicStanding.Good
-                        };
+            //            var student = new Student
+            //            {
+            //                FirstName = "FirstName" + i.ToString(),
+            //                LastName = "LastName" + i.ToString(),
+            //                AcademicStanding = Student.StudentAcademicStanding.Good
+            //            };
 
-                        session.Save(student);
-                    }
-                    //Begin Transaction
-                    tx.Commit();
-                }
+            //            session.Save(student);
+            //        }
+            //        //Begin Transaction
+            //        tx.Commit();
+            //    }
 
-            }
-            Console.WriteLine("Create Operation Finish");
-            Console.ReadLine();
+            //}
+            //Console.WriteLine("Create Operation Finish");
+            //Console.ReadLine();
             #endregion
 
             #region Read
@@ -203,6 +219,8 @@ namespace LearnNHibernate
             //}
             #endregion
             #endregion
+
+
         }
     }
 }
