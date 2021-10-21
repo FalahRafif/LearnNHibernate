@@ -62,7 +62,7 @@ namespace LearnNHibernate
 
             cfg.SessionFactory().Caching.Through<HashtableCacheProvider>()
                .WithDefaultExpiration(1440);
-            cfg.AddAssembly(Assembly.GetExecutingAssembly());
+            
             #endregion
 
             #region Connect To DB
@@ -75,9 +75,11 @@ namespace LearnNHibernate
 
                 using (var tx = session.BeginTransaction())
                 {
-                    // chap 
-                    var studentUsingTheFirstQuery = session.Get<Student>(1);
-                    var studentUsingTheSecondQuery = session.Get<Student>(1);
+                    // chap 10 | cahcing
+                    var id = Guid.Empty;
+                    id = Guid.Parse("14256207-ddfd-4644-ad5d-adc80041c3dc");
+                    var studentUsingTheFirstQuery = session.Get<Student>(id);
+                    var studentUsingTheSecondQuery = session.Get<Student>(id);
                     //perform database logic 
                     tx.Commit();
                 }
@@ -138,30 +140,30 @@ namespace LearnNHibernate
             #endregion
 
             #region Read
-            using (var session = sefact.OpenSession())
-            {
+            //using (var session = sefact.OpenSession())
+            //{
 
-                using (var tx = session.BeginTransaction())
-                {
-                    var students = session.CreateCriteria<Student>().List<Student>();
+            //    using (var tx = session.BeginTransaction())
+            //    {
+            //        var students = session.CreateCriteria<Student>().List<Student>();
 
-                    //Show All
-                    Console.WriteLine("List Students");
-                    foreach (var student in students)
-                    {
-                        Console.WriteLine("{0} \t{1} \t{2} \t{3}",
-                           student.ID, student.FirstName, student.LastName, student.AcademicStanding);
-                    }
+            //        //Show All
+            //        Console.WriteLine("List Students");
+            //        foreach (var student in students)
+            //        {
+            //            Console.WriteLine("{0} \t{1} \t{2} \t{3}",
+            //               student.ID, student.FirstName, student.LastName, student.AcademicStanding);
+            //        }
 
-                    //Show Specific Data
-                    //var stdnt = session.Get<Student>(1);
-                    //Console.WriteLine("Retrieved by ID");
-                    //Console.WriteLine("{0} \t{1} \t{2} \t{3}", stdnt.ID, stdnt.FirstName, stdnt.LastName, stdnt.AcademicStanding);
-                    tx.Commit();
-                }
+            //        //Show Specific Data
+            //        //var stdnt = session.Get<Student>(1);
+            //        //Console.WriteLine("Retrieved by ID");
+            //        //Console.WriteLine("{0} \t{1} \t{2} \t{3}", stdnt.ID, stdnt.FirstName, stdnt.LastName, stdnt.AcademicStanding);
+            //        tx.Commit();
+            //    }
 
-                Console.ReadLine();
-            }
+            //    Console.ReadLine();
+            //}
             #endregion
 
             #region Update
