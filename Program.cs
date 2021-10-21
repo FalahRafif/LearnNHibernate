@@ -33,21 +33,23 @@ namespace LearnNHibernate
             #endregion
 
             #region Set Up Connection String
-            //cfg.DataBaseIntegration(x => { 
-            //    x.ConnectionString = $@"
-            //            Data Source = {DataSource}; 
-            //            Initial Catalog = {InitialCatalog}; 
-            //            Integrated Security = {IntegratedSecurity}; 
-            //            Connect Timeout = {ConnectTimeout}; 
-            //            Encrypt = {Encrypt}; 
-            //            TrustServerCertificate = {TrustServerCertificate}; 
-            //            ApplicationIntent = {ApplicationIntent}; 
-            //            MultiSubnetFailover = {MultiSubnetFailover}"; 
+            cfg.DataBaseIntegration(x =>
+            {
+                x.ConnectionString = $@"
+                        Data Source = {DataSource}; 
+                        Initial Catalog = {InitialCatalog}; 
+                        Integrated Security = {IntegratedSecurity}; 
+                        Connect Timeout = {ConnectTimeout}; 
+                        Encrypt = {Encrypt}; 
+                        TrustServerCertificate = {TrustServerCertificate}; 
+                        ApplicationIntent = {ApplicationIntent}; 
+                        MultiSubnetFailover = {MultiSubnetFailover}";
 
-            //    x.Driver<SqlClientDriver>(); 
-            //    x.Dialect<MsSql2008Dialect>();
-            //    x.LogSqlInConsole = true;
-            //});
+                x.Driver<SqlClientDriver>();
+                x.Dialect<MsSql2008Dialect>();
+                x.LogSqlInConsole = true;
+                x.BatchSize = 10;
+            });
             #endregion
 
             #region Connect To DB
@@ -71,38 +73,52 @@ namespace LearnNHibernate
 
             #region CRUD Operation ////////////////////////////////////////////////////////////
             #region Create
-            //using (var session = sefact.OpenSession())
-            //{
+            using (var session = sefact.OpenSession())
+            {
 
-            //    using (var tx = session.BeginTransaction())
-            //    {
+                using (var tx = session.BeginTransaction())
+                {
 
-            //        var student1 = new Student
-            //        {
-            //            ID = 0,
-            //            FirstName = "Allan",
-            //            LastName = "Bommer",
-            //            AcademicStanding = Student.StudentAcademicStanding.Excellent
-            //        };
+                    //var student1 = new Student
+                    //{
+                    //    ID = 0,
+                    //    FirstName = "Allan",
+                    //    LastName = "Bommer",
+                    //    AcademicStanding = Student.StudentAcademicStanding.Excellent
+                    //};
 
-            //        var student2 = new Student
-            //        {
-            //            ID = 0,
-            //            FirstName = "Jerry",
-            //            LastName = "Lewis",
-            //            AcademicStanding = Student.StudentAcademicStanding.Excellent
-            //        };
+                    //var student2 = new Student
+                    //{
+                    //    ID = 0,
+                    //    FirstName = "Jerry",
+                    //    LastName = "Lewis",
+                    //    AcademicStanding = Student.StudentAcademicStanding.Excellent
+                    //};
 
-            //        //save data
-            //        session.Save(student1);
-            //        session.Save(student2);
-            //        //Begin Transaction
-            //        tx.Commit();
-            //    }
+                    ////save data
+                    //session.Save(student1);
+                    //session.Save(student2);
 
-            //}
-            //Console.WriteLine("Create Operation Finish");
-            //Console.ReadLine();
+                    //chap 9 | insert 25 student
+                    for (int i = 0; i < 25; i++)
+                    {
+
+                        var student = new Student
+                        {
+                            FirstName = "FirstName" + i.ToString(),
+                            LastName = "LastName" + i.ToString(),
+                            AcademicStanding = Student.StudentAcademicStanding.Good
+                        };
+
+                        session.Save(student);
+                    }
+                    //Begin Transaction
+                    tx.Commit();
+                }
+
+            }
+            Console.WriteLine("Create Operation Finish");
+            Console.ReadLine();
             #endregion
 
             #region Read
@@ -122,9 +138,9 @@ namespace LearnNHibernate
                     }
 
                     //Show Specific Data
-                    var stdnt = session.Get<Student>(1);
-                    Console.WriteLine("Retrieved by ID");
-                    Console.WriteLine("{0} \t{1} \t{2} \t{3}", stdnt.ID, stdnt.FirstName, stdnt.LastName, stdnt.AcademicStanding);
+                    //var stdnt = session.Get<Student>(1);
+                    //Console.WriteLine("Retrieved by ID");
+                    //Console.WriteLine("{0} \t{1} \t{2} \t{3}", stdnt.ID, stdnt.FirstName, stdnt.LastName, stdnt.AcademicStanding);
                     tx.Commit();
                 }
 

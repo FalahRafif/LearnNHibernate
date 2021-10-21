@@ -7,7 +7,7 @@
 	<class name = "Student"> 
 		<!-- Primary Key-->
 		<id name = "ID">
-			<generator class = "native"/>
+			<generator class = "guid.comb"/>
 		</id>
 		<!-- Property -->
 		<property name = "LastName"/>
